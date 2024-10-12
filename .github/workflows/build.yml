@@ -6,6 +6,9 @@ on:
       - main
   pull_request:
 
+env:
+  CSC_FOR_PULL_REQUEST: true
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
