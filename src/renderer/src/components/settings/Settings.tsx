@@ -38,7 +38,6 @@ const SettingsSection: Component<SettingsSectionProps> = ({ title, icon, childre
         <i class={`settings-section__upper-part-icon ${icon}`} />
         <h3 class="settings-section__upper-part-title">{title}</h3>
       </div>
-
       {children}
     </div>
   );
