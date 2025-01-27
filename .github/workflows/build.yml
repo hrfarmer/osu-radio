@@ -1,4 +1,4 @@
-name: Build/release
+name: Build/Release osu!radio
 on:
   push:
     branches:
