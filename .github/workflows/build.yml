@@ -13,28 +13,28 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
       steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v1
+        - name: Check out Git repository
+          uses: actions/checkout@v1
 
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
-        with:
-          node-version: 20
+        - name: Install Node.js, NPM and Yarn
+          uses: actions/setup-node@v1
+          with:
+            node-version: 20
 
-      - name: Install Bun
-        uses: oven-sh/setup-bun@v2
+        - name: Install Bun
+          uses: oven-sh/setup-bun@v2
 
-      - name: Build/release Electron app
-        uses: samuelmeuli/action-electron-builder@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        - name: Build/release Electron app
+          uses: samuelmeuli/action-electron-builder@v1
+          with:
+            github_token: ${{ secrets.github_token }}
+            release: ${{ startsWith(github.ref, 'refs/tags/v') }}
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: osu-radio-setup${{ matrix.os == 'windows-latest' && '.exe' || matrix.os == 'macos-latest' && '.dmg' || '.AppImage' }}
-          path: |
-            ${{ matrix.os == 'windows-latest' && 'dist/*.exe' || matrix.os == 'macos-latest' && 'dist/*.dmg' || 'dist/*.AppImage' }}
-          if-no-files-found: error
-          compression-level: 0
+        - name: Upload artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: osu-radio-setup${{ matrix.os == 'windows-latest' && '.exe' || matrix.os == 'macos-latest' && '.dmg' || '.AppImage' }}
+            path: |
+              ${{ matrix.os == 'windows-latest' && 'dist/*.exe' || matrix.os == 'macos-latest' && 'dist/*.dmg' || 'dist/*.AppImage' }}
+            if-no-files-found: error
+            compression-level: 0
