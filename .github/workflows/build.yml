@@ -28,35 +28,11 @@ jobs:
           github_token: ${{ secrets.github_token }}
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
 
-      - name: Upload Windows artifacts
-        if: matrix.os == 'windows-latest'
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: windows-artifacts
+          name: osu-radio-setup${{ matrix.os == 'windows-latest' && '.exe' || matrix.os == 'macos-latest' && '.dmg' || '.AppImage' }}
           path: |
-            dist/*.exe
-            dist/latest.yml
+            ${{ matrix.os == 'windows-latest' && 'dist/*.exe' || matrix.os == 'macos-latest' && 'dist/*.dmg' || 'dist/*.AppImage' }}
           if-no-files-found: error
-
-      - name: Upload macOS artifacts
-        if: matrix.os == 'macos-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: macos-artifacts
-          path: |
-            dist/*.dmg
-            dist/*.zip
-            dist/latest-mac.yml
-          if-no-files-found: error
-
-      - name: Upload Linux artifacts
-        if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: linux-artifacts
-          path: |
-            dist/*.AppImage
-            dist/*.deb
-            dist/*.snap
-            dist/latest-linux.yml
-          if-no-files-found: error
+          compression-level: 0
