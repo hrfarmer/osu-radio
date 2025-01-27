@@ -7,6 +7,7 @@
   "type": "module",
   "main": "./out/main/index.js",
   "scripts": {
+    "app:dist": "electron-builder --config",
     "build": "bun run typecheck && electron-vite build",
     "build:linux": "electron-vite build && electron-builder --linux --config",
     "build:mac": "electron-vite build && electron-builder --mac --config",
@@ -75,5 +76,11 @@
     "vite-plugin-lucide-preprocess": "^1.1.1",
     "vite-plugin-solid": "^2.7.0"
   },
-  "packageManager": "^bun@1.1.33"
+  "packageManager": "^bun@1.1.33",
+  "build": {
+    "appId": "btmc.osu-radio",
+    "mac": {
+      "category": "public.app-category.music"
+    }
+  }
 }
