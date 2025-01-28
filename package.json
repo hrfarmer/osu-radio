@@ -81,7 +81,7 @@
     "mac": {
       "category": "public.app-category.music"
     },
-    "linux": {
+    "snap": {
       "publish": [
         "github"
       ]
