@@ -80,6 +80,7 @@
     "appId": "btmc.osu-radio",
     "mac": {
       "category": "public.app-category.music"
-    }
+    },
+    "publish": "github"
   }
 }
