@@ -33,7 +33,7 @@ linux:
     - AppImage
     - deb
   publish:
-    - provider: github
+    - github
   maintainer: electronjs.org
   category: Utility
 appImage:
