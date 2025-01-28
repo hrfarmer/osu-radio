@@ -81,6 +81,10 @@
     "mac": {
       "category": "public.app-category.music"
     },
-    "publish": "github"
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ]
   }
 }
