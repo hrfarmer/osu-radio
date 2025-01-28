@@ -29,7 +29,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
-          args: "--config"
+          args: "-c.snap.publish=github"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
